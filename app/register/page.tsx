@@ -71,24 +71,31 @@ export default function RegisterPage() {
             required
           />
 
-          <PhoneInput
-            country={"eg"}
-            value={form.mobile}
-            onChange={(phone, country) => {
-              const c = country as import("react-phone-input-2").CountryData;
-              setForm({
-                ...form,
-                mobile: phone,
-                mobile_country_code: c.dialCode,
-              });
-            }}
-            inputClass="w-full rounded-lg border px-4 py-3"
-            buttonClass=""
-            inputProps={{
-              required: true,
-              placeholder: "Phone",
-            }}
-          />
+           
+
+   <PhoneInput
+  country={"eg"}
+  value={form.mobile}
+  onChange={(phone, country) => {
+    const c = country as import("react-phone-input-2").CountryData;
+    setForm({
+      ...form,
+      mobile: phone,
+      mobile_country_code: c.dialCode,
+    });
+  }}
+  containerClass="w-full flex rounded-xl border border-[#000] overflow-hidden" // بوردر واحد حول كل الحقل
+  inputClass="w-full px-4 py-6 text-sm text-black outline-none border-none"   // الغي البوردر الافتراضي من input
+  buttonClass="h-full px-3 bg-white border-r border-[#000]"                 // زر العلم مع بوردر داخلي بسيط
+  inputProps={{
+    required: true,
+    placeholder: "Phone",
+  }}
+/>
+
+
+
+
 
           {/* Password */}
           <div className="relative">
