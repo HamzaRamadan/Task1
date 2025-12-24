@@ -9,8 +9,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white shadow-sm">
-      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+    <header className="w-full bg-white shadow-sm rounded-t-4xl">
+      <div className="container  mx-auto flex items-center justify-between px-4 py-4">
 
         {/* Logo + Links */}
         <div className="flex items-center gap-8">

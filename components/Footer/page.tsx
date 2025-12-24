@@ -45,9 +45,10 @@ export default function Footer() {
                 Ipsam in eos qui consequatur ab cum maxime. Soluta dolor
                 quae ipsam in eos qui consequatur ab cum maxime. Soluta
                 dolor quae
+                
               </p>
+              
             </div>
-{/* Contact Us - Mobile Only */}
             {/* Contact Us - Mobile Only */}
 <div className="md:hidden">
   <h3 className="font-semibold mb-4 text-xl text-white">
@@ -64,8 +65,9 @@ export default function Footer() {
     </li>
     <li className="hover:text-white cursor-pointer flex items-center gap-3">
       <Image src="/icons/location.svg" alt="Location" width={20} height={20} />
-      <span>381, Cairo, Egypt</span>
+      <span>381,Cairo,Egypt</span>
     </li>
+    
   </ul>
 </div>
 

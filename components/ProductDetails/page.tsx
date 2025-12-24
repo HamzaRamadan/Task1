@@ -8,8 +8,8 @@ const images = [
   "/product1.png",
   "/product2.png",
   "/product3.png",
+  "/product4.png",
   "/product1.png",
-  "/product3.png",
 ];
 
 const colors = [
@@ -28,8 +28,16 @@ export default function ProductDetails() {
 
   const price = 300;
 
-  const nextImage = () => setActiveImage((prev) => (prev + 1) % images.length);
-  const prevImage = () => setActiveImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+const thumbs = images.slice(1); 
+
+const nextImage = () =>
+  setActiveImage((prev) => (prev + 1) % images.length);
+
+const prevImage = () =>
+  setActiveImage((prev) =>
+    prev === 0 ? images.length - 1 : prev - 1
+  );
+
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -85,40 +93,49 @@ export default function ProductDetails() {
           </div>
 
           {/* Thumbnails */}
-          <div className="flex flex-wrap gap-3 mt-4 justify-center lg:justify-start">
-            {(showAllThumbs ? images : images.slice(0, 2)).map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveImage(i)}
-                className={`relative w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-xl p-1 border transition bg-[#F5F5F5]`}
-              >
-                <Image src={img} alt="thumb" fill className="object-cover rounded-lg p-2" />
-              </button>
-            ))}
+<div className="flex flex-wrap gap-3 mt-4 justify-center lg:justify-start">
+  {(showAllThumbs ? thumbs : thumbs.slice(0, 2)).map((img, i) => {
+    const realIndex = i + 1; 
 
-            {!showAllThumbs && images.length > 4 && (
-              <button
-                onClick={() => setShowAllThumbs(true)}
-                className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-xl overflow-hidden"
-              >
-                <Image src={images[4]} alt="more" fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">
-                    +{images.length - 4}
-                  </span>
-                </div>
-              </button>
-            )}
-          </div>
+    return (
+      <button
+        key={realIndex}
+        onClick={() => setActiveImage(realIndex)}
+        className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-xl p-1  transition bg-[#F5F5F5]"
+      >
+        <Image
+          src={img}
+          alt="thumb"
+          fill
+          className="object-cover rounded-lg p-2"
+        />
+      </button>
+    );
+  })}
+
+  {!showAllThumbs && thumbs.length > 2 && (
+    <button
+      onClick={() => setShowAllThumbs(true)}
+      className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-xl overflow-hidden"
+    >
+      <Image src={thumbs[2]} alt="more" fill className="object-cover" />
+      <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+        <span className="text-white font-semibold text-lg">
+          +{thumbs.length - 2}
+        </span>
+      </div>
+    </button>
+  )}
+</div>
+
 
         <div className="hidden sm:block">
-  <Image src="/Layer_1.png" alt="" width={150} height={150} />
+  <Image src="/Layer_1.png" alt="" width={120} height={120} />
 </div>
 
         </div>
 
         {/* Right – Details */}
-        {/* <div className="w-full lg:max-w-[500px]"> */}
         <div className="w-full lg:max-w-130 lg:-mx-20">
 
           {/* Top Labels */}
@@ -201,12 +218,13 @@ export default function ProductDetails() {
           </div>
 
           {/* Quantity */}
-          <div className="flex flex-col sm:flex-row items-center gap-2 mb-6">
-            <div className="flex items-center gap-1">
-              <p className="text-[#020202] font-poppins font-medium text-[20px]">Quantity</p>
-              <p className="text-[#8A8A8A] font-poppins font-normal text-[16px]">($300.00 for Piece)</p>
-            </div>
-          </div>
+         
+<div className="flex flex-col sm:flex-row sm:items-center items-start gap-2 mb-6">
+  <div className="flex items-center gap-1">
+    <p className="text-[#020202] font-poppins font-medium text-[20px]">Quantity</p>
+    <p className="text-[#8A8A8A] font-poppins font-normal text-[16px]">($300.00 for Piece)</p>
+  </div>
+</div>
 
           {/* Quantity Selector + Price + Add To Cart */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 w-full">
@@ -221,7 +239,7 @@ export default function ProductDetails() {
             </div>
 
             {/* Add To Cart Button */}
-         <button className="w-full lg:w-auto flex items-center justify-center gap-2 bg-[#c9a59b] text-white py-2 px-6 rounded-xl font-medium hover:opacity-90">
+         <button className="w-full lg:w-auto flex items-center justify-center gap-2 bg-[#c9a59b] text-white py-3 px-6 rounded-xl font-medium hover:opacity-90">
   Add To Cart
   <Image src="/icons/shopping bag.svg" alt="" width={20} height={20} />
 </button>

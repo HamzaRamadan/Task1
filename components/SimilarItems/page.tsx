@@ -65,9 +65,9 @@ export default function SimilarItems() {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 640) setItemsPerView(2); // فون
-      else if (window.innerWidth < 1024) setItemsPerView(3); // تابلت
-      else setItemsPerView(4); // لاب
+      if (window.innerWidth < 640) setItemsPerView(2); 
+      else if (window.innerWidth < 1024) setItemsPerView(3); 
+      else setItemsPerView(4); 
     };
 
     handleResize();
@@ -101,7 +101,8 @@ export default function SimilarItems() {
   }, [index]);
 
   return (
-    <section className="w-full px-8 py-10">
+    <section className="pl-5 pr-0 lg:pl-20 lg:pr-0 py-10">
+
       <h2 className="text-2xl font-semibold mb-6">
         Similar Items
         <div className="w-[40px] h-[4px] bg-[#BE968E] rounded-full mt-1" />
@@ -123,13 +124,14 @@ export default function SimilarItems() {
               className={`flex-shrink-0 w-[calc(50%-1.5rem)] sm:w-[calc(33.333%-1.5rem)] lg:w-[calc(25%-1.5rem)] bg-white relative`}
             >
               {item.discount && (
-                <span className="absolute top-4 left-4 rounded-full bg-[#f4eaea] px-3 py-1 text-xs text-[#b26b6b]">
+                <span className="absolute top-4 left-4 border border-[#4040401A] rounded-lg p-4  px-3 py-2 text-xs text-[#b26b6b] text-[10px]  font-bold">
                   {item.discount}
                 </span>
+                
               )}
 
               <div className="border border-[#0000000D] rounded-2xl p-4">
-                <div className="absolute top-4 right-4 flex items-center gap-3">
+                <div className="absolute top-4 right-4 cursor-pointer flex items-center gap-3">
                   <Image
                     src="/icons/shopping.svg"
                     alt=""
@@ -179,7 +181,7 @@ export default function SimilarItems() {
                     )}
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 cursor-pointer">
                     {item.colors.map((c, i) => (
                       <span
                         key={i}
@@ -200,13 +202,13 @@ export default function SimilarItems() {
       <div className="flex justify-center gap-4 mt-8">
         <button
           onClick={prev}
-          className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center"
+          className="h-10 w-10 cursor-pointer rounded-full bg-[#E8EDF2] flex items-center justify-center"
         >
           <ChevronLeft />
         </button>
         <button
           onClick={next}
-          className="h-10 w-10 rounded-full bg-[#b28a7a] text-white flex items-center justify-center"
+          className="h-10 w-10 cursor-pointer rounded-full bg-[#b28a7a] text-white flex items-center justify-center"
         >
           <ChevronRight />
         </button>
