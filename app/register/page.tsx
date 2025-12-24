@@ -73,7 +73,9 @@ export default function RegisterPage() {
 
            
 
-   <PhoneInput
+
+
+<PhoneInput
   country={"eg"}
   value={form.mobile}
   onChange={(phone, country) => {
@@ -84,18 +86,15 @@ export default function RegisterPage() {
       mobile_country_code: c.dialCode,
     });
   }}
-  containerClass="w-full flex rounded-xl border border-[#000] overflow-hidden" // بوردر واحد حول كل الحقل
-  inputClass="w-full px-4 py-6 text-sm text-black outline-none border-none"   // الغي البوردر الافتراضي من input
-  buttonClass="h-full px-3 bg-white border-r border-[#000]"                 // زر العلم مع بوردر داخلي بسيط
+  containerClass="w-full relative flex rounded-xl border border-[#000]" // شيل overflow-hidden
+  inputClass="w-full px-4 py-6 text-sm text-black outline-none border-none"
+  buttonClass="h-full px-3 bg-white border-r border-[#000]"
+  dropdownClass="absolute top-full left-0 w-full mt-1 bg-white border border-[#000] rounded-b-xl shadow-lg max-h-60 overflow-y-auto z-50"
   inputProps={{
     required: true,
     placeholder: "Phone",
   }}
 />
-
-
-
-
 
           {/* Password */}
           <div className="relative">
